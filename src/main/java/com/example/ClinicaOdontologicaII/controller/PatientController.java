@@ -42,6 +42,19 @@ public class PatientController {
         }
     }
 
+    @GetMapping("/lastname/{lastName}")
+    public ResponseEntity<Patient> findByLastName(@PathVariable String lastName) {
+
+        Optional<Patient> optionalPatient = patientService.findByLastName(lastName);
+
+        if(optionalPatient.isPresent()){
+            return ResponseEntity.ok(optionalPatient.get());
+        }
+        else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PutMapping("/update")
     public ResponseEntity<Patient> update(@RequestBody Patient patient){
 

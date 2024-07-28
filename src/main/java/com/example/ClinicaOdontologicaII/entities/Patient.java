@@ -19,7 +19,16 @@ public class Patient {
     private String cardIdentity;
     @Column(nullable = false)
     private LocalDate admissionOfDate;
-    public Patient() {
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_address", referencedColumnName = "id")
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public Integer getId() {

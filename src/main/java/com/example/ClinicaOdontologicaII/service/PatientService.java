@@ -30,4 +30,8 @@ public class PatientService {
     public List<Patient> findAll(){
         return patientRepository.findAll();
     }
+
+    public Optional<Patient> findByLastName(String lastName){
+        return patientRepository.findByLastName(lastName);
+    }
 }
